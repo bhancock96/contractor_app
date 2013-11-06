@@ -1,0 +1,20 @@
+<div>
+	<h2>Sign In</h2>
+	<%= form_tag sessions_url do %>
+		<%= text_field_tag :email, params[:email], :placeholder => "example@gmail.com" %>
+		<%= password_field_tag :password, params[:password], :placeholder => "Password" %>
+		<%= submit_tag "Sign In" %>
+	<% end %>
+</div>
+
+<div>
+	<h2>New Account</h2>
+	<%= form_for @contractor do |f| %>
+		<%= f.text_field :contractor_name, :placeholder => "Your Name" %>
+		<%= f.text_field :business_name, :placeholder => "Your Business Name" %>
+		<%= f.text_field :location, :placeholder => "Location" %>
+		<%= f.email_field :email, :placeholder => "Email" %>
+		<%= f.password_field :password, :placeholder => "Password" %>
+		<%= f.submit "Sign Up" %>
+	<% end %>
+</div>
