@@ -8,7 +8,10 @@
 </head>
 <body>
 	<% if session[:contractor_id] %>
-		<%= link_to "Logout", session_url, method: :delete %>
+		<%= link_to "Logout", logout_url, method: :post %>
+	<% else %>
+		<%= link_to "Sign In", new_session_url %>
+		<%= link_to "Register", new_contractor_url %>
 	<% end %>	
 
 <%= yield %>
