@@ -9,7 +9,7 @@ class ContractorsController < ApplicationController
 			session[:contractor_id] = contractor.id
 			redirect_to contractor_url(contractor)
 		else
-			render :new
+			render new_contractor_url
 		end
 	end
 
