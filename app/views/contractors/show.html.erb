@@ -1,3 +1,11 @@
 <h1><%= @contractor.business_name %></h1>
 
 <%= link_to "Create a Job", new_contractor_job_url(@contractor) %>
+
+<div>
+	<ul>
+		<% @contractor.jobs.each do |job| %>
+			<li><%= link_to "#{job.customer_name}"%></li>
+		<% end%>
+	</ul>
+</div>
