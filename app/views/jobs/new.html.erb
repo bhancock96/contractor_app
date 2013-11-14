@@ -8,6 +8,7 @@
 		<%= f.telephone_field :customer_zipcode , :placeholder => 'Customer Zip Code' %>
 		<%= f.text_field :customer_phone_number , :placeholder => 'Customer Phone Number' %>
 		<%= f.email_field :customer_email , :placeholder => 'Customer Email' %>
+		<%= f.select :status, options_for_select(%w[select... lead estimate produced]) %>
 		<%= f.submit 'Create' %>
 	<% end %>
 </div>
