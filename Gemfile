@@ -22,6 +22,10 @@ end
 
 gem 'jquery-rails'
 
+group :development do
+  gem "better_errors"
+end
+
 gem 'rspec-rails', '~>2.0', :group => [:test, :development]
 group :test do
   gem 'shoulda-matchers'
