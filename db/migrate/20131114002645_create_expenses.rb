@@ -3,7 +3,7 @@ class CreateExpenses < ActiveRecord::Migration
     create_table :expenses do |t|
     	t.string :store
     	t.string :expense_type
-    	t.integer :amount
+    	t.string :amount
     	t.belongs_to :job
 
       t.timestamps

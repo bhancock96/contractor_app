@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(:version => 20131114002645) do
   create_table "expenses", :force => true do |t|
     t.string   "store"
     t.string   "expense_type"
-    t.integer  "amount"
+    t.string   "amount"
     t.integer  "job_id"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
