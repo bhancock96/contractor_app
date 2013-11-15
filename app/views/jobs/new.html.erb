@@ -5,8 +5,8 @@
 		<%= f.text_field :customer_name , :placeholder => 'Customer Name' %>
 		<%= f.text_field :customer_street_address , :placeholder => 'Customer Address' %>
 		<%= f.text_field :customer_city , :placeholder => 'Customer City' %>
-		<%= f.telephone_field :customer_zipcode , :placeholder => 'Customer Zip Code' %>
-		<%= f.text_field :customer_phone_number , :placeholder => 'Customer Phone Number' %>
+		<%= f._field :customer_zipcode , :placeholder => 'Customer Zip Code' %>
+		<%= f.telephone_field :customer_phone_number , :placeholder => 'Customer Phone Number' %>
 		<%= f.email_field :customer_email , :placeholder => 'Customer Email' %>
 		<%= f.select :status, options_for_select(%w[select... lead estimate complete]) %>
 		<%= f.submit 'Create' %>
