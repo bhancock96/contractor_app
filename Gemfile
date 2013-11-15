@@ -22,9 +22,13 @@ end
 
 gem 'jquery-rails'
 
-group :development, :test do
-  gem 'rspec-rails', '~>2.0'
+gem 'rspec-rails', '~>2.0', :group => [:test, :development]
+group :test do
   gem 'shoulda-matchers'
+  gem 'capybara'
+  gem 'guard-rspec'
+  gem 'spork-rails'
+  gem 'guard-spork'
 end
 
 # To use ActiveModel has_secure_password
