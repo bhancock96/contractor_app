@@ -15,6 +15,8 @@ class JobsController < ApplicationController
 	end
 
 	def show
-		@job = Job.find(params[:id])
+		@contractor = Contractor.find(params[:contractor_id])
+		@job = @contractor.jobs.find(params[:id])
+		@expense = Expense.new
 	end
 end

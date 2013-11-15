@@ -3,9 +3,11 @@
 <%= link_to "Create a Job", new_contractor_job_url(@contractor) %>
 
 <div>
+	<% if @contractor.jobs %>
 	<ul>
 		<% @contractor.jobs.each do |job| %>
-			<li><%= link_to "#{job.customer_name}"%></li>
+			<li><%= link_to "#{job.customer_name}", contractor_job_url(job)%></li>
 		<% end%>
 	</ul>
+	<% end %>
 </div>

@@ -1,0 +1,20 @@
+<div>
+	<ul>
+		<li><%= @job.customer_name %> - <%= @job.status %></li>
+		<li><%= @job.customer_street_address %></li>
+		<li><%= @job.customer_city %></li>
+		<li><%= @job.customer_zipcode %></li>
+		<li><%= @job.customer_phone_number %></li>
+		<li><%= @job.customer_email %></li>
+	</ul>
+</div>
+
+<div>
+	<h3>Current Job Expenses</h3>
+	<ul>
+		<% @job.expenses.each do |expense| %>
+		<li><%= expense.store %>, <%= expense.expense_type %> -- Amount: $<%= expense.amount %></li>
+		<% end %>
+	</ul>
+	<%= render partial: "expenses/new" %>
+</div>
