@@ -1,6 +1,8 @@
 ContractorApp::Application.routes.draw do
   resources :contractors do
-  	resources :jobs
+  	resources :jobs do
+  		resources :expenses
+  	end
   end
   
   post '/sessions', :to => 'sessions#create', :as => 'create_session'

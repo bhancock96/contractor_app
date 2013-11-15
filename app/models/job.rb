@@ -4,6 +4,7 @@ class Job < ActiveRecord::Base
   				  :customer_email, :customer_city
 
   belongs_to :contractor
+  has_many :expenses
 
   validates_presence_of :customer_name, :customer_street_address,
   						:customer_zipcode, :customer_phone_number,
