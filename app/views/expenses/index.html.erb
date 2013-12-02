@@ -1,0 +1,16 @@
+<div>
+	<table>
+		<tr>
+			<th>Store</th>
+			<th>Items Bought</th>
+			<th>Amount</th>
+		</tr>
+		<% @expenses.each do |expense| %>
+		<tr>
+			<td><%= expense.store %></td>
+			<td><%= expense.expense_type %></td>
+			<td>$<%= expense.amount %></td>
+		</tr>	
+		<%end%>
+	</table>
+</div>
