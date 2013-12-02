@@ -1,7 +1,9 @@
 <div>
 	<h2>Sign In</h2>
-	<%= form_tag create_session_url do %>
+	<%= form_tag create_session_url, :id => 'sign_in' do %>
+		<%= label_tag :email, "Email" %>
 		<%= text_field_tag :email, params[:email], :placeholder => "example@gmail.com" %>
+		<%= label_tag :password, "Password" %>
 		<%= password_field_tag :password, params[:password], :placeholder => "Password" %>
 		<%= submit_tag "Sign In" %>
 	<% end %>

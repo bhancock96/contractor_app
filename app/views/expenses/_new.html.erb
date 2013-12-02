@@ -1,10 +1,10 @@
-<h3>Add an Expense</h3>
-<%= form_for [@contractor, @job, @expense] do |f| %>
+<h2>Add an Expense</h2>
+<%= form_for ([@contractor, @job, @expense]) do |f| %>
 	<%= f.label :store %>
 	<%= f.text_field :store %>
-	<%= f.label "What did you buy?"%>
+	<%= f.label "What you bought" %>
 	<%= f.text_field :expense_type %>
-	<%= f.label :amount %>
+	<%= f.label :amount, "Cost" %>
 	<%= f.text_field :amount %>
 	<%= f.submit "Add Expense" %>
 <% end %>

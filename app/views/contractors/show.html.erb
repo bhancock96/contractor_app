@@ -1,6 +1,7 @@
-<h1><%= @contractor.business_name %></h1>
+<h1 id='business_name'><%= @contractor.business_name %></h1>
 
 <%= link_to "Create a Job", new_contractor_job_url(@contractor) %>
+<%= link_to "Total Expenses", contractor_expenses_url(@contractor) %>
 
 <div>
 	<% if @contractor.jobs %>

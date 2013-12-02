@@ -1,4 +1,5 @@
 <div>
+	<h2>Customer Information</h2>
 	<ul>
 		<li><%= @job.customer_name %> - <%= @job.status %></li>
 		<li><%= @job.customer_street_address %></li>
@@ -7,9 +8,14 @@
 		<li><%= @job.customer_phone_number %></li>
 		<li><%= @job.customer_email %></li>
 	</ul>
+	<div>
+		<h3>Job Notes</h3>
+		<p><%= @job.notes %></p>
+	</div>
 
-	<%= link_to "Edit Customer Information", edit_contractor_job_url(@contractor, @job)%>
+	<%= link_to "Edit Job Information", edit_contractor_job_url(@contractor, @job)%>
 </div>
+
 
 <div>
 	<h3>Current Job Expenses</h3>
@@ -18,5 +24,6 @@
 		<li><%= expense.store %>, <%= expense.expense_type %> -- Amount: $<%= expense.amount %></li>
 		<% end %>
 	</ul>
+	<%= link_to "Add Labor Expenses" %>
 	<%= render partial: "expenses/new" %>
 </div>
