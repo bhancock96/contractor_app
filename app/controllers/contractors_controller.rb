@@ -10,6 +10,7 @@ class ContractorsController < ApplicationController
 			redirect_to contractor_url(contractor)
 		else
 			render new_contractor_url
+			flash[:notice] = "Something went wrong. Please try again."
 		end
 	end
 
