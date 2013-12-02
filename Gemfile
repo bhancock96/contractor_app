@@ -26,7 +26,11 @@ group :development do
   gem "better_errors"
 end
 
-gem 'rspec-rails', '~>2.0', :group => [:test, :development]
+group :test, :development do
+  gem 'rspec-rails', '~>2.0'
+  gem 'database_cleaner'
+  gem 'launchy'
+end
 group :test do
   gem 'shoulda-matchers'
   gem 'capybara'
