@@ -5,10 +5,22 @@
 
 <div>
 	<% if @contractor.jobs %>
+	<h3>Current Jobs</h3>
 	<ul>
 		<% @contractor.jobs.each do |job| %>
 			<li><%= link_to "#{job.customer_name}", contractor_job_url(job)%></li>
 		<% end%>
 	</ul>
 	<% end %>
+</div>
+<div>
+	<h3>Business Statistics</h3>
+	<ul>
+		<li>Total Jobs</li>
+		<li>Jobs Completed</li>
+		<li>Total Booked</li>
+		<li>Total Produced</li>
+		<li>Profit Margin</li>
+		<li>Profit in Dollars</li>
+	</ul>
 </div>
