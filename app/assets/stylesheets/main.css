@@ -1,0 +1,8 @@
+/*************** LAYOUT ***************/
+
+.container{
+	width: 720px;
+	border: 1px solid black;
+	margin: 0 auto;
+	padding: 15px;
+}
