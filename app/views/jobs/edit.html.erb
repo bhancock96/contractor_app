@@ -14,9 +14,68 @@
 		<%= f.label :email %>
 		<%= f.text_field :customer_email %>
 		<%= f.label 'Job Status' %>
-		<%= f.select :status, options_for_select(%w[select... Lead Estimate Complete]) %>
+		<%= f.select :status, options_for_select(%w[Lead Estimate Booked Complete], :selected => @job.status) %>
 		<%= f.label 'Job Notes' %>
 		<%= f.text_area :notes %>
+		<!-- Displays new estimate form if job status is lead -->
+		<% if (@job.status == 'Lead') %>
+			<div id='add_estimate_form'>
+				<h3>New Estimate Form</h3>
+					<%= f.label "Estimated Hours" %>
+					<%= f.text_field :estimated_hours %>
+					<%= f.label "Estimated Sales" %>
+					<%= f.text_field :estimated_sales %>
+			</div>
+		<% end %>
+		<!-- Displays estimate details for any job status other than lead -->
+		<% if (@job.status == 'Estimate') || (@job.status == 'Booked') || (@job.status == 'Complete') %>
+			<div id='estimate_details'>
+				<h3>Estimate Details</h3>
+				<ul>
+					<li>Estimated Hours: <%= @job.estimated_hours %></li>
+					<li>Estimated Sales: <%= @job.estimated_sales %></li>
+				</ul>
+				<button>Edit</button>
+			</div>
+		<% end %>
+		<!-- Displays add bookings form if job status is estimate -->
+		<% if (@job.status == 'Estimate') %>
+			<div id='add_bookings'>
+				<h3>Book this Job</h3>
+					<%= f.label "Booked Hours" %>
+					<%= f.text_field :booked_hours %>
+					<%= f.label "Booked Sales" %>
+					<%= f.text_field :booked_sales %>
+			</div>
+		<% end %>
+		<!-- Displays booking details if job status is booked or complete -->
+		<% if (@job.status == 'Booked') || (@job.status == 'Complete') %>
+			<h3>Booking Details</h3>
+			<ul>
+				<li>Booked Hours: <%= @job.booked_hours %></li>
+				<li>Booked Sales: <%= @job.booked_sales %></li>
+			</ul>
+			<button>Edit</button>
+		<% end %>
+		<!-- Displays completed job form -->
+		<% if (@job.status == 'Booked') %>
+			<h3>Final Completed Job Hours and Sales</h3>
+				<%= f.label "Total Hours" %>
+				<%= f.text_field :produced_hours %>
+				<%= f.label "Total Sales" %>
+				<%= f.text_field :produced_sales %>
+		<% end %>
+		<!-- Displays total job hours and sales -->
+		<% if (@job.status == 'Complete') %>
+			<h3>Final Hours and Sales</h3>
+			<ul>
+				<li>Final Hours: <%= @job.produced_hours%></li>
+				<li>Final Sales: <%= @job.produced_sales%></li>
+			</ul>
+			<button>Edit</button>
+		<% end %>
+		<br>
 		<%= f.submit 'Update' %>
 	<% end %>
 </div>
+

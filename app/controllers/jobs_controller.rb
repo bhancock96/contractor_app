@@ -30,7 +30,7 @@ class JobsController < ApplicationController
 		job = contractor.jobs.find(params[:id])
 		job.update_attributes(params[:job])
 		if job.save
-			redirect_to contractor_job_url(contractor, job)
+			redirect_to edit_contractor_job_url(contractor, job)
 		else
 			render edit_contractor_job_url(contractor, job)
 		end
