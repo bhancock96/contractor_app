@@ -8,7 +8,7 @@
 	<h3>Current Jobs</h3>
 	<ul>
 		<% @contractor.jobs.each do |job| %>
-			<li><%= link_to "#{job.customer_name}", contractor_job_url(job)%></li>
+			<li><%= link_to "#{job.customer_name}", contractor_job_url(@contractor, job)%></li>
 		<% end%>
 	</ul>
 	<% end %>
@@ -16,8 +16,8 @@
 <div>
 	<h3>Business Statistics</h3>
 	<ul>
-		<li>Total Jobs</li>
-		<li>Jobs Completed</li>
+		<li>Total Jobs: <%=@contractor.jobs.count %></li>
+		<li>Jobs Completed: <%=@contractor.jobs.where(status: 'produced').count%></li>
 		<li>Total Booked</li>
 		<li>Total Produced</li>
 		<li>Profit Margin</li>
