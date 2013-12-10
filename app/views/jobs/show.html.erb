@@ -1,29 +1,108 @@
-<div>
+<div class='customer_information'>
 	<h2>Customer Information</h2>
 	<ul>
-		<li><%= @job.customer_name %> - <%= @job.status %></li>
-		<li><%= @job.customer_street_address %></li>
-		<li><%= @job.customer_city %></li>
-		<li><%= @job.customer_zipcode %></li>
-		<li><%= @job.customer_phone_number %></li>
-		<li><%= @job.customer_email %></li>
+		<div class='contact_info'>
+			<li>Name: <%= @job.customer_name %></li>
+			<li>Phone Number: <%= @job.customer_phone_number %></li>
+			<li>Email: <%= @job.customer_email %></li>
+			<li>Job Status: <%= @job.status %></li>
+		</div>
+		<div class='address'>
+			<li>Address: <%= @job.customer_street_address %></li>
+			<li>City: <%= @job.customer_city %></li>
+			<li>Zip Code: <%= @job.customer_zipcode %></li>
+		</div>
 	</ul>
-	<div>
+	<div class='notes'>
 		<h3>Job Notes</h3>
 		<p><%= @job.notes %></p>
+		<h3>Hours and Sales</h3>
+		<% if (@job.status == 'Estimate') || (@job.status == 'Booked') || (@job.status == 'Complete') %>
+			<div id='estimate_details'>
+				<ul>
+					<li>Estimated Hours: <%= @job.estimated_hours %></li>
+					<li>Estimated Sales: <%= @job.estimated_sales %></li>
+				</ul>
+			</div>
+		<% end %>
+		<% if (@job.status == 'Booked') || (@job.status == 'Complete') %>
+			<ul>
+				<li>Booked Hours: <%= @job.booked_hours %></li>
+				<li>Booked Sales: <%= @job.booked_sales %></li>
+			</ul>
+		<% end %>
+		<% if (@job.status == 'Complete') %>
+			<ul>
+				<li>Final Hours: <%= @job.produced_hours%></li>
+				<li>Final Sales: <%= @job.produced_sales%></li>
+			</ul>
+		<% end %>
+	<%= link_to "Edit Job Information", edit_contractor_job_url(@contractor, @job)%>
 	</div>
 
-	<%= link_to "Edit Job Information", edit_contractor_job_url(@contractor, @job)%>
 </div>
 
 
-<div>
+<div class='expenses'>
 	<h3>Current Job Expenses</h3>
-	<ul>
-		<% @job.expenses.each do |expense| %>
-		<li><%= expense.store %>, <%= expense.expense_type %> -- Amount: $<%= expense.amount %></li>
-		<% end %>
-	</ul>
+	<% if @job.expenses %>
+		<table>
+			<tr>
+				<th>Store</th>
+				<th>Items Bought</th>
+				<th>Cost</th>
+			</tr>
+			<% @job.expenses.each do |expense| %>
+			<tr>
+				<td><%= expense.store %></td>
+				<td><%= expense.expense_type %></td>
+				<td><%= expense.amount %></td>
+			</tr>
+			<% end %>
+		</table>
+	<% else %>
+		<p>You currently have no expenses for this job</p>
+	<% end %>
+	<div id='new_expense'>
+		<%= render partial: "expenses/new" %>
+	</div>
+	<button id='add_expense'>Add Expense</button>
 	<%= link_to "Add Labor Expenses" %>
-	<%= render partial: "expenses/new" %>
+</div>
+
+<div class='images'>
+	<h3>Add Job Images</h3>
+	<%= form_for [@contractor, @job, @image] do |f| %>
+		<%= f.hidden_field :job_id, :value => @job.id %>
+		<%= f.label :file %>
+		<%= f.file_field :file %>
+		<%= f.select :image_type, options_for_select(%w[Before After Proposal Contract]) %>
+		<%= f.submit "Add Image"%>
+	<% end %>
+	<div>
+		<div class='before_images'>
+			<h3>Before Images</h3>
+				<% @job.before_images.each do |image| %>
+					<%= image_tag image.file_url(:thumb).to_s %>
+				<% end %>
+		</div>
+		<div class='after_images'>	
+		<h3>After Images</h3>
+			<% @job.after_images.each do |image| %>
+				<%= image_tag image.file_url(:thumb).to_s %>
+			<% end %>
+		</div>
+		<div class='proposal_images'>
+			<h3>Proposal</h3>
+			<% @job.proposal_images.each do |image| %>
+					<%= image_tag image.file_url(:thumb).to_s%>
+				<% end %>
+		</div>
+		<div class='contract_images'>
+			<h3>Contract</h3>
+			<% @job.contract_images.each do |image| %>
+					<%= image_tag image.file_url(:thumb).to_s%>
+				<% end %>
+		</div>
+	</div>
 </div>
