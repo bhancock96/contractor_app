@@ -8,6 +8,7 @@ ContractorApp::Application.routes.draw do
   
   resources :contractors do
   	resources :expenses, only: [:index]
+    resources :employees
   end
 
   put 'contractors/:contractor_id/expenses', :to => 'expenses#index'
