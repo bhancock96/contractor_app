@@ -1,6 +1,7 @@
 ContractorApp::Application.routes.draw do
   resources :contractors do
   	resources :jobs do
+      resources :images, only: [:new, :create, :destroy]
   		resources :expenses, only: [:new, :create]
   	end
   end
