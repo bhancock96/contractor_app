@@ -1,8 +1,100 @@
 /*************** LAYOUT ***************/
-
 .container{
-	width: 720px;
+	width: 960px;
+	height: 100%;
 	border: 1px solid black;
 	margin: 0 auto;
 	padding: 15px;
+	background-color: #BEB7B4;
+}
+
+/*************** NAVBAR ***************/
+nav{
+	width: 708px;
+	margin: 0 auto;
+	display: inline-block;
+	margin-left: 230px;
+	margin-right: 60px;
+}
+
+nav ul{
+	background-color: #BEB7B4;
+	padding: 10px;
+	padding-right: 0;
+}
+
+nav ul li{
+	display: inline;
+	padding: 10px 56px;
+	border-right: 1px solid white;
+}
+
+nav a{
+	text-decoration: none;
+	color: #2A140B;
+}
+
+/*************** TABLES *****************/
+table{
+	width: 500px;
+	margin: 0 auto;
+	margin-bottom: 25px;
+}
+
+th{
+	text-align: center;
+}
+
+td{
+	text-align: center;
+	border-bottom: 1px solid black;
+	border-right: 1px solid black;
+}
+
+/************** IMAGES ********************/
+.images{
+	width: 900px;
+	margin: 0 auto;
+}
+
+.before_images{
+	display: inline-block;
+	width: 45%;
+}
+
+.after_images{
+	float: right;
+	width: 45%;
+}
+
+/************* CUSTOMER INFO ************/
+.customer_information ul{
+	margin-left: 175px;
+	padding-left: 0;
+}
+.customer_information h2{
+	text-align: center;
+}
+
+.customer_information ul li{
+	list-style-type: none;
+}
+
+.contact_info{
+	float: left;
+	margin-right: 200px;
+}
+
+.notes{
+	margin-left: 175px;
+	margin-top: 45px;
+}
+
+.notes ul{
+	margin-left: 0;
+}
+
+/************ EXPENSES ******************/
+.expenses{
+	text-align: center;
 }

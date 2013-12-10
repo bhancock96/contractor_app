@@ -1,4 +1,5 @@
 <div>
+	<%= link_to "Back to Job", contractor_job_url(@contractor, @job) %>
 	<h2>Edit Customer Information - <%= @job.customer_name %></h2>
 	<%= form_for [@contractor, @job] do |f| %>
 		<%= f.label 'Customer Name' %>
@@ -35,6 +36,7 @@
 					<li>Estimated Hours: <%= @job.estimated_hours %></li>
 					<li>Estimated Sales: <%= @job.estimated_sales %></li>
 				</ul>
+
 				<button>Edit</button>
 			</div>
 		<% end %>
