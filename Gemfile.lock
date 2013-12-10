@@ -41,6 +41,10 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    carrierwave (0.9.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
     celluloid (0.15.2)
       timers (~> 1.1.0)
     childprocess (0.3.9)
@@ -57,6 +61,11 @@ GEM
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.0.2)
+    factory_girl (4.3.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.3.0)
+      factory_girl (~> 4.3.0)
+      railties (>= 3.0.0)
     ffi (1.9.3)
     formatador (0.2.4)
     guard (2.2.4)
@@ -129,6 +138,7 @@ GEM
       ffi (>= 0.5.0)
     rdoc (3.12.2)
       json (~> 1.4)
+    rmagick (2.13.2)
     rspec (2.14.1)
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
@@ -181,14 +191,17 @@ DEPENDENCIES
   bcrypt-ruby (~> 3.0.0)
   better_errors
   capybara
+  carrierwave
   coffee-rails (~> 3.2.1)
   database_cleaner
+  factory_girl_rails (~> 4.0)
   guard-rspec
   guard-spork
   jquery-rails
   launchy
   pg
   rails (= 3.2.13)
+  rmagick
   rspec-rails (~> 2.0)
   sass-rails (~> 3.2.3)
   shoulda-matchers

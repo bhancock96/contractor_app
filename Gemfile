@@ -21,6 +21,8 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'rmagick'
+gem 'carrierwave'
 
 group :development do
   gem "better_errors"
@@ -28,6 +30,7 @@ end
 
 group :test, :development do
   gem 'rspec-rails', '~>2.0'
+  gem 'factory_girl_rails', '~>4.0'
   gem 'database_cleaner'
   gem 'launchy'
 end
