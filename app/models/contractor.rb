@@ -3,6 +3,7 @@ class Contractor < ActiveRecord::Base
 
   has_many :jobs
   has_many :expenses
+  has_many :employees
   
   validates_presence_of :email, :password, :contractor_name, :business_name
   validates_uniqueness_of :email
