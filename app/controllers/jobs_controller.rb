@@ -1,4 +1,9 @@
 class JobsController < ApplicationController
+	def index
+		@contractor = Contractor.find(params[:contractor_id])
+		@jobs = @contractor.jobs
+	end
+
 	def new
 		@contractor = Contractor.find(session[:contractor_id])
 		@job = @contractor.jobs.new
@@ -17,6 +22,7 @@ class JobsController < ApplicationController
 	def show
 		@contractor = Contractor.find(params[:contractor_id])
 		@job = @contractor.jobs.find(params[:id])
+		@image = Image.new
 		@expense = Expense.new
 	end
 
