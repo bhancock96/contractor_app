@@ -1,24 +1,26 @@
-<h1 id='business_name'><%= @contractor.business_name %></h1>
+<div class='profile'>
+	<h1 id='business_name'><%= @contractor.business_name %></h1>
 
-<div>
-	<% if @contractor.jobs %>
-	<h3>Current Jobs</h3>
-	<ul>
-		<% @contractor.jobs.each do |job| %>
-			<li><%= link_to "#{job.customer_name}", contractor_job_url(@contractor, job)%> - <%= job.status %></li>
-		<% end%>
-	</ul>
-	<% end %>
-</div>
-<div>
-	<h3>Business Statistics</h3>
-	<ul>
-		<li>Total Jobs: <%=@contractor.jobs.count %></li>
-		<li>Jobs Completed: <%=@contractor.jobs.where(status: 'Complete').count%></li>
-		<li>Total Booked: $<%= @contractor.total_booked %></li>
-		<li>Total Produced: $<%= @contractor.total_produced %></li>
-		<li>Unproduced Sales: $<%= @contractor.unproduced_sales %></li>
-		<li>Profit Margin: <%= @contractor.profit_margin %>%</li>
-		<li>Profit in Dollars: $<%= @contractor.total_profit %></li>
-	</ul>
+	<div>
+		<% if @contractor.jobs %>
+		<h3>Current Jobs</h3>
+		<ul>
+			<% @contractor.jobs.each do |job| %>
+				<li><%= link_to "#{job.customer_name}", contractor_job_url(@contractor, job)%> - <%= job.status %></li>
+			<% end%>
+		</ul>
+		<% end %>
+	</div>
+	<div>
+		<h3>Business Statistics</h3>
+		<ul>
+			<li>Total Jobs: <%=@contractor.jobs.count %></li>
+			<li>Jobs Completed: <%=@contractor.jobs.where(status: 'Complete').count%></li>
+			<li>Total Booked: $<%= @contractor.total_booked %></li>
+			<li>Total Produced: $<%= @contractor.total_produced %></li>
+			<li>Unproduced Sales: $<%= @contractor.unproduced_sales %></li>
+			<li>Profit Margin: <%= @contractor.profit_margin %>%</li>
+			<li>Profit in Dollars: $<%= @contractor.total_profit %></li>
+		</ul>
+	</div>
 </div>

@@ -1,42 +1,88 @@
 <div class='customer_information'>
-	<h2>Customer Information</h2>
-	<ul>
-		<div class='contact_info'>
-			<li>Name: <%= @job.customer_name %></li>
-			<li>Phone Number: <%= @job.customer_phone_number %></li>
-			<li>Email: <%= @job.customer_email %></li>
-			<li>Job Status: <%= @job.status %></li>
-		</div>
-		<div class='address'>
-			<li>Address: <%= @job.customer_street_address %></li>
-			<li>City: <%= @job.customer_city %></li>
-			<li>Zip Code: <%= @job.customer_zipcode %></li>
-		</div>
-	</ul>
-	<div class='notes'>
-		<h3>Job Notes</h3>
-		<p><%= @job.notes %></p>
-		<h3>Hours and Sales</h3>
-		<% if (@job.status == 'Estimate') || (@job.status == 'Booked') || (@job.status == 'Complete') %>
-			<div id='estimate_details'>
-				<ul>
-					<li>Estimated Hours: <%= @job.estimated_hours %></li>
-					<li>Estimated Sales: <%= @job.estimated_sales %></li>
-				</ul>
+	<h1>Job Details</h1>
+	<div class='contact'>
+		<h3 class='subhead'>Contact Information</h3>
+		<ul>
+			<div class='contact_info'>
+				<li><span>Name: </span><%= @job.customer_name %></li>
+				<li><span>Phone: </span><%= @job.customer_phone_number %></li>
+				<li><span>Email: </span><%= @job.customer_email %></li>
+				<li><span>Job Status: </span><%= @job.status %></li>
 			</div>
+			<div class='address'>
+				<li><span>Address: </span><%= @job.customer_street_address %></li>
+				<li><span>City: </span><%= @job.customer_city %></li>
+				<li><span>Zip Code: </span><%= @job.customer_zipcode %></li>
+			</div>
+		</ul>
+	</div>
+	<div class='notes'>
+		<h3 class='subhead'>Hours and Sales</h3>
+		<% if (@job.status == 'Estimate') %>
+		<table class='table-1'>
+			<tr>
+				<th colspan='2'>Estimate</th>
+			</tr>
+			<tr>
+				<td>Hours</td>
+				<td>Sales</td>
+			</tr>
+			<tr>
+				<td><%= @job.estimated_hours %></td>
+				<td><%= @job.estimated_sales %></td>
+			</tr>
 		<% end %>
-		<% if (@job.status == 'Booked') || (@job.status == 'Complete') %>
-			<ul>
-				<li>Booked Hours: <%= @job.booked_hours %></li>
-				<li>Booked Sales: <%= @job.booked_sales %></li>
-			</ul>
+
+		<% if (@job.status == 'Booked') %>
+			<table class='table-2'
+				<tr>
+					<th colspan='2'>Estimate</th>
+					<th colspan='2'>Bookings</th>
+				</tr>
+				<tr>
+					<td>Hours</td>
+					<td>Sales</td>
+					<td>Hours</td>
+					<td>Sales</td>
+				</tr>
+				<tr>
+					<td><%= @job.estimated_hours %></td>
+					<td><%= @job.estimated_sales %></td>
+					<td><%= @job.booked_hours %></td>
+					<td><%= @job.booked_sales %></td>
+				</tr>
+			</table>	
 		<% end %>
+
 		<% if (@job.status == 'Complete') %>
-			<ul>
-				<li>Final Hours: <%= @job.produced_hours%></li>
-				<li>Final Sales: <%= @job.produced_sales%></li>
-			</ul>
+			<table class='table-3'>
+				<tr>
+					<th colspan='2'>Estimate</th>
+					<th colspan='2'>Bookings</th>
+					<th colspan='2'>Produced</th>
+				</tr>
+				<tr>
+					<td>Hours</td>
+					<td>Sales</td>
+					<td>Hours</td>
+					<td>Sales</td>
+					<td>Hours</td>
+					<td>Sales</td>
+				</tr>
+				<tr>
+					<td><%= @job.estimated_hours %></td>
+					<td><%= @job.estimated_sales %></td>
+					<td><%= @job.booked_hours %></td>
+					<td><%= @job.booked_sales %></td>
+					<td><%= @job.produced_hours%></td>
+					<td><%= @job.produced_sales%></td>
+				</tr>
+			</table>
 		<% end %>
+
+
+			
+		</table>
 	<%= link_to "Edit Job Information", edit_contractor_job_url(@contractor, @job)%>
 	</div>
 
@@ -71,8 +117,8 @@
 </div>
 
 <div class='images'>
-	<h3>Add Job Images</h3>
-	<%= form_for [@contractor, @job, @image] do |f| %>
+	<h3 class='subhead'>Add Job Images</h3>
+	<%= form_for [@contractor, @job, @image], :id => 'image_form' do |f| %>
 		<%= f.hidden_field :job_id, :value => @job.id %>
 		<%= f.label :file %>
 		<%= f.file_field :file %>

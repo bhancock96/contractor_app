@@ -1,5 +1,5 @@
 <div>
-	<%= form_tag({action: "index"}, method: "get") do %>
+	<%= form_tag({action: "index"}, method: "get", id: 'sorter') do %>
 		<%= label_tag "Sort by" %>
 		<%= select_tag :sort_by, options_for_select(["Customer Name", "Date", "Store", "Items Bought"]) %>
 		<%= hidden_field_tag(:contractor_id, @contractor.id) %>

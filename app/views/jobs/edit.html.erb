@@ -16,8 +16,7 @@
 		<%= f.text_field :customer_email %>
 		<%= f.label 'Job Status' %>
 		<%= f.select :status, options_for_select(%w[Lead Estimate Booked Complete], :selected => @job.status) %>
-		<%= f.label 'Job Notes' %>
-		<%= f.text_area :notes %>
+		
 		<!-- Displays new estimate form if job status is lead -->
 		<% if (@job.status == 'Lead') %>
 			<div id='add_estimate_form'>
